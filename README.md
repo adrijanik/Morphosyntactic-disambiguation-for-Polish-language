@@ -10,7 +10,9 @@ $ sudo pip install .
 ```
 ##### to run analysis on xcef cesAna data:
 ```
-$ python main.py > results.md
+$ from morphosyntactic_disambiguer import pipeline
+$ data_flow = pipeline.Pipeline()
+$ data_flow.run('train_data.xml','gold_data.xml')
 ```
 | Accuracy  | Train | Test
 | ------------- | ------------- | ----- |
