@@ -11,7 +11,7 @@ $ sudo pip install .
 ##### to run analysis on xcef cesAna data:
 ```
 $ from morphosyntactic_disambiguer import run_pipeline
-$ run_pipeline('train_data.xml','gold_data.xml')
+$ run_pipeline(location, 'train_data.xml','gold_data.xml')
 ```
 | Accuracy  | Train | Test
 | ------------- | ------------- | ----- |
