@@ -20,14 +20,8 @@ def take(n, iterable):
     print("[take] Return first n items of the iterable as a list")
     return list(islice(iterable, n))
 
-location = os.path.dirname(os.path.abspath(__file__)) + "/data/"
-TRAIN = location + "train-analyzed.xml"
-TRAIN_TAGGED = location + "train-gold.xml"
 
-TEST = location + "test-analyzed.xml"
-TEST_TAGGED = location + "gold-task-a-b.xml"
-
-def create_dataset(one_hot):
+def create_dataset(TRAIN, TRAIN_TAGGED):
     print("[create_dataset] As a result function creates file: input-output-dataset.csv with data in following format: 100 columns with embeddings + one-hot encoding of interpretation + disambiguation (1/0)")
     print("ETAP I - read in data")
     tagged_data_processor = DataProcessor(TRAIN_TAGGED)
