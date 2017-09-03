@@ -1,1 +1,2 @@
-from .main import *
+from pipeline import run_pipeline
+

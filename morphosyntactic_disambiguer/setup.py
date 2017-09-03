@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='morphosyntactic_disambiguer',
-      version='0.1',
+      version='0.3',
       description='Morphosyntactic disambiguer for Polish language',
       url='http://github.com/adrijanik/morphosyntactic_disambiguer',
       author='Adrianna Janik',
