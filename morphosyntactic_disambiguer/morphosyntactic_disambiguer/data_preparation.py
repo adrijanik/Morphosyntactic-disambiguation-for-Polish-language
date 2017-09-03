@@ -78,7 +78,7 @@ def take(n, iterable):
     return list(islice(iterable, n))
 
 
-def prepare_test_data(file_test,  one_hot):
+def prepare_test_data(file_test, location,  one_hot):
     
 ### MUST HAVE - PRESERVE ORDER OF WORDS IN OUTPUT!!! ###
 
@@ -93,7 +93,7 @@ def prepare_test_data(file_test,  one_hot):
     reference_words = list(words.keys()) # words list in order
     
     ### READ IN EMBEDDINGS ###
-    chunks = pd.read_csv('pl-embeddings-skip_pure_words.txt', chunksize=1000000, delimiter=' ', header=None, encoding='utf-8')
+    chunks = pd.read_csv(location + 'pl-embeddings-skip_pure_words.txt', chunksize=1000000, delimiter=' ', header=None, encoding='utf-8')
     embeddings_df = pd.DataFrame()
     embeddings_df = pd.concat(chunk for chunk in chunks).sort_values(0)
     del embeddings_df[101]

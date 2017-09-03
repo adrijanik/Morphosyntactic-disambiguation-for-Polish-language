@@ -8,18 +8,18 @@ from disambiguer import Disambiguer
 from results_evaluation import Evaluation
 import os
 
-def run_pipeline(train="train-analyzed.xml", train_tagged="train-gold.xml"):
+def run_pipeline(location, train="train-analyzed.xml", train_tagged="train-gold.xml"):
 
     one_hot = LabelEncoder()
     
     print('----------------------------------------------------------------------------------------------------------')
     print("STAGE 1: CREATING DATASET")
     print('----------------------------------------------------------------------------------------------------------')
-    location = os.path.dirname(os.path.abspath(__file__)) + "/data/"
+
     TRAIN = location + train
     TRAIN_TAGGED = location + train_tagged
     
-    create_dataset(TRAIN, TRAIN_TAGGED)
+    create_dataset(location, TRAIN, TRAIN_TAGGED)
     
     print('----------------------------------------------------------------------------------------------------------')
     print("STAGE 2: SPLIT DATA INTO TRAINING AND TEST SETS")
@@ -37,8 +37,8 @@ def run_pipeline(train="train-analyzed.xml", train_tagged="train-gold.xml"):
     print("STAGE 4: PREPARE TEST DATA")
     print('----------------------------------------------------------------------------------------------------------')
     
-    data_path = "./data/test-analyzed.xml"
-    prepare_test_data(data_path, one_hot)
+    data_path = location + "test-analyzed.xml"
+    prepare_test_data(data_path, location, one_hot)
     
     print('----------------------------------------------------------------------------------------------------------')
     print("STAGE 5: PROCESS TEST DATA WITH MODEL")

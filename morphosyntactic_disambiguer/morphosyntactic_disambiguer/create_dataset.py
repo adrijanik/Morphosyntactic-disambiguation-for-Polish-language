@@ -12,7 +12,7 @@ import itertools
 import time
 import progressbar
 from lxml import objectify, etree
-from prepare_data import DataProcessor
+from data_processor import DataProcessor
 from disambiguer import Disambiguer
 from model import create_model
 
@@ -21,7 +21,7 @@ def take(n, iterable):
     return list(islice(iterable, n))
 
 
-def create_dataset(TRAIN, TRAIN_TAGGED):
+def create_dataset(location, TRAIN, TRAIN_TAGGED):
     print("[create_dataset] As a result function creates file: input-output-dataset.csv with data in following format: 100 columns with embeddings + one-hot encoding of interpretation + disambiguation (1/0)")
     print("ETAP I - read in data")
     tagged_data_processor = DataProcessor(TRAIN_TAGGED)
@@ -39,7 +39,7 @@ def create_dataset(TRAIN, TRAIN_TAGGED):
     reference_words =(data_processor.words.keys())
     
     print("ETAP II - read in predefined embeddings")
-    chunks = pd.read_csv('pl-embeddings-skip_pure_words.txt', chunksize=1000000, delimiter=' ', header=None, encoding='utf-8')
+    chunks = pd.read_csv(location + 'pl-embeddings-skip_pure_words.txt', chunksize=1000000, delimiter=' ', header=None, encoding='utf-8')
     embeddings_df = pd.DataFrame()
     embeddings_df = pd.concat(chunk for chunk in chunks).sort_values(0)
     print(embeddings_df.head())
